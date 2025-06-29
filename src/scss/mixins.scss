@@ -1,0 +1,19 @@
+@use "./devices.scss";
+
+@mixin phone {
+    @media only screen and (max-width: devices.$xs) {
+        @content;
+    }
+}
+
+@mixin tablets {
+    @media only screen and (min-width: #{devices.$xs + 1}) and (max-width: devices.$sm) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: #{devices.$sm + 1}) {
+        @content;
+    }
+}
