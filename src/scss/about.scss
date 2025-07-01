@@ -1,0 +1,38 @@
+@use "./palette" as palette;
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: calc(100vh - 100px);
+    background-color: palette.$whitesmoke;
+
+    .about__intro {
+        font-size: 20px;
+    }
+    h1 {
+        font-size: 48px;
+        color: palette.$indigo-dye;
+        margin-bottom: 32px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    p {
+        max-width: 800px;
+        font-size: 18px;
+        color: palette.$indigo-dye;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .about__contact-text {
+        margin-top: 60px; // pushes it further down
+        font-size: 20px; // makes it bigger
+        color: palette.$indigo-dye;
+        text-align: center;
+    }
+}

@@ -31,15 +31,44 @@
     max-width: 100%;
     margin-top: 10px;
     color: palette.$indigo-dye;
-    font-size: 26px;
-    font-weight: 600;
     font-size: 24px;
+    font-weight: 600;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
 
-    @include mixins.phone {
-        .logo {
-            font-size: 20px;
-        }
+.logo__icon {
+    color: palette.$bright-blue;
+    margin-right: 8px;
+    font-size: 24px;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.logo__text {
+    color: palette.$indigo-dye;
+}
+
+@include mixins.phone {
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo__icon {
+        font-size: 20px;
+    }
+}
+
+// Add this animation at the end of your SCSS file:
+@keyframes pulse-glow {
+    0%,
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 5px palette.$bright-blue;
+    }
+    50% {
+        transform: scale(1.2);
+        text-shadow: 0 0 15px palette.$bright-blue;
     }
 }
 
@@ -80,9 +109,9 @@
         font-weight: 600;
 
         &:hover {
-            background-color: palette.$pastel-blue;
+            background-color: palette.$light-yellow;
             color: palette.$indigo-dye;
-            border-color: palette.$bright-blue;
+            border-color: palette.$yellow;
         }
     }
 }

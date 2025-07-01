@@ -70,23 +70,48 @@ body {
             border-color 0.3s ease;
 
         &:hover {
-            background-color: palette.$pastel-blue;
+            background-color: palette.$light-yellow;
             color: palette.$indigo-dye;
-            border-color: palette.$bright-blue;
+            border-color: palette.$yellow;
         }
     }
-
+    // do not forget to add ithe yellow stamp to tablet and mobile!!!!!
     &__image {
         flex: 1;
-        display: flex;
+        display: block;
         justify-content: center;
         align-items: center;
+        position: relative; // for the yellow logo
+
+        .profile__stamp {
+            // this entire  block is for the yellow logo
+            position: absolute;
+            top: -160px;
+            left: 80px;
+            width: 120px;
+            height: 120px;
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        .profile__wave {
+            // this block is for the wave
+            position: absolute;
+            bottom: 60px;
+            right: 1px;
+            width: 200px;
+            height: 50px;
+            z-index: 1;
+            opacity: 0.8;
+        }
 
         img {
+            display: block;
             width: 100%;
             max-width: 400px;
             height: auto;
-            transform: translateY(-80px) translateX(60px);
+            position: relative; // this line and below are for the stamp
+            z-index: 2;
         }
     }
 }

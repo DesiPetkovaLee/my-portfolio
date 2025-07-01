@@ -1,16 +1,25 @@
 import "./scss/main.scss";
-import Header from "./Header.jsx";
-import Profile from "./Profile.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./Header";
+import Profile from "./Profile";
+import Projects from "./Projects";
+import Contact from "./Contact";
+import About from "./About";
 
-function App() {
+const App = () => {
+    console.log("This is logging");
+
     return (
-        <>
+        <Router>
             <Header />
-            <main>
-                <Profile />
-            </main>
-        </>
+            <Routes>
+                <Route path="/" element={<Profile />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+        </Router>
     );
-}
+};
 
 export default App;

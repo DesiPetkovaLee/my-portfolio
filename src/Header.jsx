@@ -1,40 +1,43 @@
-function Header() {
+import { Link } from "react-router-dom";
+
+const Header = () => {
     return (
         <header className="header">
             <div className="header__wrapper">
                 <a href="#" className="logo">
-                    Desi Lee
+                    <span className="logo__icon">&lt;/&gt;</span>
+                    <span className="logo__text">Desi Lee</span>
                 </a>
                 <nav className="nav">
                     <ul className="nav__list">
                         <li>
-                            <a href="#home" className="nav__link">
+                            <Link to="/" className="nav__link">
                                 Home
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="#about" className="nav__link">
+                            <Link to="/about" className="nav__link">
                                 About
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="#projects" className="nav__link">
+                            <Link to="/projects" className="nav__link">
                                 Projects
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
-                                href="#contact"
+                            <Link
+                                to="/contact"
                                 className="nav__link nav__button"
                             >
                                 Get In Touch
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </nav>
             </div>
         </header>
     );
-}
+};
 
 export default Header;
