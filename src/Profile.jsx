@@ -1,7 +1,6 @@
 import DesignImage from "./assets/coder.svg";
 
 const Profile = () => {
-    console.log("LOGGING");
     return (
         <section className="profile">
             <div className="profile__content">
