@@ -10,7 +10,7 @@ const App = () => {
     console.log("This is logging");
 
     return (
-        <Router>
+        <Router basename="/my-profile-site/">
             <Header />
             <Routes>
                 <Route path="/" element={<Profile />} />
