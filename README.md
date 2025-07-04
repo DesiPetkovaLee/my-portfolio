@@ -1,12 +1,32 @@
-# React + Vite
+# My Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is my personal portfolio website, stored in the GitHub repository **My-profile-site**.
 
-Currently, two official plugins are available:
+It’s built with React, SCSS, and BEM methodology, and is designed to showcase my professional background, skills, and projects.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Project Overview
 
-## Expanding the ESLint configuration
+This portfolio website includes:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Home/Profile** – A brief introduction about me.
+- **About** – More details about my background and interests.
+- **Projects** – A showcase of selected projects with descriptions and links.
+- **Contact** – Ways to get in touch, including email and social media links.
+
+The site is still under development. Upcoming improvements include:
+
+- Adding a footer visible on all pages
+- Improving styling and color palette
+- Enhancing responsiveness for different screen sizes
+
+## 🛠 Tech Stack
+
+This project uses:
+
+- React
+- SCSS
+- BEM methodology
+
+
+
+
