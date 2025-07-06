@@ -2,7 +2,7 @@ function Footer() {
     return (
         <footer className="footer">
             <div className="footer__content">
-                <p className="footer__email">petkovalee@@gmail.com</p>
+                <p className="footer__email">petkovalee@gmail.com</p>
                 <div className="footer__icons">
                     <a
                         href="https://github.com/DesiPetkovaLee"
