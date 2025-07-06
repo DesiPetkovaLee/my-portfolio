@@ -8,6 +8,7 @@ const Header = () => {
                     <span className="logo__icon">&lt;/&gt;</span>
                     <span className="logo__text">Desi Lee</span>
                 </a>
+
                 <nav className="nav">
                     <ul className="nav__list">
                         <li>

@@ -6,21 +6,31 @@
     align-items: center;
     justify-content: center;
     padding: 60px 20px;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 140px);
     background-color: palette.$whitesmoke;
     text-align: center;
 
     h1 {
         color: palette.$indigo-dye;
-        font-size: 48px;
+        font-size: 38px;
         margin-bottom: 16px;
         font-weight: 700;
+
+        .about__highlight {
+            color: palette.$indigo-dye;
+            padding: 0 4px;
+            box-decoration-break: clone;
+            box-shadow: inset 0 -0.4em palette.$pastel-blue;
+            display: inline;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
     }
 
     p {
         color: palette.$indigo-dye;
         font-size: 18px;
-        margin-bottom: 16px;
+        margin-bottom: 26px;
     }
 
     &__github-link {
@@ -54,8 +64,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 300px;
-        width: 300px;
+        height: 200px;
+        width: 200px;
         background-color: palette.$bright-blue;
         color: #ffd600;
         font-size: 24px;
