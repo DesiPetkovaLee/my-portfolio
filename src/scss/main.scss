@@ -20,7 +20,8 @@ body {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 300px 20px 100px;
+    padding: 100px 20px 60px;
+    min-height: calc(100vh - 140px); // header60px - footer60px
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -75,7 +76,7 @@ body {
             border-color: palette.$yellow;
         }
     }
-    // do not forget to add ithe yellow stamp to tablet and mobile!!!!!
+
     &__image {
         flex: 1;
         display: block;
@@ -84,7 +85,6 @@ body {
         position: relative; // for the yellow logo
 
         .profile__stamp {
-            // this entire  block is for the yellow logo
             position: absolute;
             top: -160px;
             left: 80px;
@@ -95,7 +95,6 @@ body {
         }
 
         .profile__wave {
-            // this block is for the wave
             position: absolute;
             bottom: 60px;
             right: 1px;
@@ -147,8 +146,11 @@ body {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 120px;
-        padding: 40px 16px;
+        gap: 20px;
+        padding: 20px 16px 60px;
+        box-sizing: border-box;
+        height: calc(100vh - 60px);
+        overflow-y: auto;
 
         &__title {
             font-size: 32px;
@@ -175,4 +177,93 @@ body {
             }
         }
     }
+}
+
+.footer {
+    background-color: palette.$indigo-dye;
+    color: palette.$whitesmoke;
+    padding: 1rem 2rem;
+
+    &__content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    &__email {
+        font-size: 1.2rem;
+        margin: 0;
+        margin-top: -4px;
+    }
+
+    &__icons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        color: #1a0066;
+        font-size: 1.2rem;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: -4px;
+
+        &:hover {
+            background-color: #ffd600;
+            color: palette.$indigo-dye;
+        }
+    }
+}
+
+// global styles
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    // overflow: visible;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    // overflow-x: hidden; // only blocks horizontal scrolling
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header {
+    height: 80px;
+    flex-shrink: 0;
+}
+
+footer {
+    height: 60px;
+    flex-shrink: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
 }

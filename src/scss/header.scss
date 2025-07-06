@@ -2,9 +2,65 @@
 @use "./devices";
 @use "./mixins";
 
+/* reset and base */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto; // allow normal page scrolling if needed
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: palette.$whitesmoke;
+    color: palette.$zomp;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header {
+    height: auto !important;
+    flex-shrink: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    overflow: visible;
+}
+
+footer {
+    height: 60px;
+    flex-shrink: 0;
+}
+
+/* HEADER */
+
 .header {
-    max-width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 999;
+    max-width: 100%;
     overflow-x: hidden;
     box-sizing: border-box;
     padding: 28px 32px;
@@ -59,25 +115,30 @@
     }
 }
 
-// Add this animation at the end of your SCSS file:
 @keyframes pulse-glow {
-    0%,
     100% {
         transform: scale(1);
-        text-shadow: 0 0 5px palette.$bright-blue;
     }
     50% {
         transform: scale(1.2);
-        text-shadow: 0 0 15px palette.$bright-blue;
     }
 }
+
+/* NAV */
 
 .nav {
     max-width: 100%;
     margin-top: 10px;
+    overflow-y: visible;
+    box-sizing: border-box;
+    height: auto;
+    max-height: none;
+    min-height: auto;
 
     &__list {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 24px;
         list-style: none;
         padding: 0;
@@ -112,6 +173,54 @@
             background-color: palette.$light-yellow;
             color: palette.$indigo-dye;
             border-color: palette.$yellow;
+        }
+    }
+}
+
+/* FOOTER */
+
+.footer {
+    background-color: palette.$blue-purple;
+    color: palette.$whitesmoke;
+    padding: 1rem 2rem;
+
+    &__content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    &__email {
+        font-size: 1.2rem;
+        margin: 0;
+        margin-top: -4px;
+    }
+
+    &__icons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        color: #1a0066;
+        font-size: 1.2rem;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: -4px;
+
+        &:hover {
+            background-color: #ffd600;
+            color: #1a0066;
         }
     }
 }

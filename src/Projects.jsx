@@ -22,7 +22,10 @@ const projects = [
 const Projects = () => {
     return (
         <section className="projects">
-            <h1>My Projects</h1>
+            <h1>
+                {" "}
+                <span className="about__highlight">My Projects</span>
+            </h1>
             <p>Click below to see all my projects on GitHub!</p>
             <a
                 href="https://github.com/DesiPetkovaLee"

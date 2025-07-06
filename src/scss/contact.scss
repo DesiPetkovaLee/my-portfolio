@@ -1,29 +1,50 @@
 @use "./palette.scss";
+@use "./mixins.scss";
 
 .contact {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 100px);
+    align-items: center;
+    min-height: calc(100vh - 140px);
     padding: 40px 20px;
-    text-align: center;
     background-color: palette.$whitesmoke;
+}
+
+.contact__card {
+    background-color: #fff;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 40px 50px;
+    width: 600px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
     h1 {
-        font-size: 48px;
+        font-size: 32px;
         color: palette.$indigo-dye;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
         font-weight: 700;
         letter-spacing: 1px;
+
+        .about__highlight {
+            color: palette.$indigo-dye;
+            padding: 0 4px;
+            box-decoration-break: clone;
+            box-shadow: inset 0 -0.4em palette.$pastel-blue;
+            display: inline;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
     }
 
     p {
-        font-size: 20px;
+        font-size: 18px;
         color: palette.$paynes-gray;
-        margin: 12px 0;
+        margin: 8px 0;
 
         a {
             color: palette.$bright-blue;
@@ -36,6 +57,38 @@
                 color: palette.$yellow;
                 border-bottom-color: palette.$yellow;
             }
+        }
+    }
+}
+
+@include mixins.tablets {
+    .contact__card {
+        width: 500px;
+        height: 250px;
+        padding: 30px 40px;
+
+        h1 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+}
+
+@include mixins.phone {
+    .contact__card {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+
+        h1 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 14px;
         }
     }
 }
