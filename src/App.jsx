@@ -1,16 +1,41 @@
 import "./scss/main.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useLocation,
+} from "react-router-dom";
 import Header from "./Header";
 import Profile from "./Profile";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import About from "./About";
 import Footer from "./Footer";
+import { useEffect } from "react";
+
+// ScrollHandler
+const ScrollHandler = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (
+            location.pathname === "/projects" ||
+            location.pathname === "/my-portfolio/projects"
+        ) {
+            document.body.style.overflowY = "auto";
+        } else {
+            document.body.style.overflowY = "hidden";
+        }
+    }, [location.pathname]);
+
+    return null;
+};
 
 const App = () => {
     return (
-        <Router basename="/my-profile-site/">
+        <Router basename="/my-portfolio/">
             <div className="layout">
+                <ScrollHandler />
                 <Header />
                 <main>
                     <Routes>
@@ -22,7 +47,6 @@ const App = () => {
                 </main>
                 <Footer />
             </div>
-
         </Router>
     );
 };
