@@ -1,226 +1,489 @@
-@use "./palette";
-@use "./devices";
-@use "./mixins";
+@use "./palette.scss";
+@use "./devices.scss";
+@use "./mixins.scss";
 
 /* reset and base */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    height: 100%;
-    margin: 0;
-    overflow-x: hidden;
-    overflow-y: auto; // allow normal page scrolling if needed
+  height: 100%;
+  margin: 0;
+  padding: 0; 
+  overflow-x: hidden;
+  overflow-y: auto; 
 }
 
 body {
-    font-family: "Inter", sans-serif;
-    background-color: palette.$whitesmoke;
-    color: palette.$zomp;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  background-color: palette.$whitesmoke;
+  color: #1a1a1a; // Very dark grey instead of black
+  overflow-y: auto; 
+
+  &.blue-theme {
+    background-color: palette.$vista-blue;
+    color: #1a1a1a; // to match the homepage content
+    transition: background-color 0.5s ease-in-out;
+
+    &.room-lit {
+      background-color: #fdf5e6; // Light beige when toggled
+    }
+
+    .about,
+    .projects,
+    .contact {
+      h1,
+      p,
+      span {
+        color: #1a1a1a; 
+      }
+    }
+  }
+
+  &.room-lit .profile::after {
+    background-color: #fdf5e6;
+  }
 }
 
 .layout {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: transparent; // Default transparent background
+  position: relative; // Needed for the absolute background
+  z-index: 1;
+
+  &.blue-theme {
+    background-color: palette.$vista-blue;
+    color: #1a1a1a; 
+    transition: background-color 0.5s ease-in-out;
+
+    &.room-lit {
+      background-color: #fdf5e6; 
+    }
+
+    .about,
+    .projects,
+    .contact {
+      h1,
+      p,
+      span {
+        color: #1a1a1a; 
+      }
+    }
+  }
 }
 
-header {
-    height: auto !important;
-    flex-shrink: 0;
+.homepage-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: background-color 0.5s ease-in-out;
+  }
+
+  &::before {
+    left: 0;
+    width: 40%;
+    background-color: palette.$vista-blue;
+  }
+
+  &::after {
+    left: 40%;
+    width: 60%;
+    background-color: palette.$tan;
+  }
+
+  .room-lit &::after {
+    background-color: #fdf5e6;
+  }
+}
+
+.profile {
+  margin: 0;
+  margin-top: 80px; // only account for fixed header
+  max-width: none;
+  width: 100%;
+  padding: 0;
+  height: calc(100vh - 140px); // exact height, full viewport minus header(80px) and footer(60px)
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch; // changed from center to stretch so content fills full height
+  gap: 0;
+  position: relative; // needed for pseudo-elements
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: -1;
+  }
+
+  &::before {
+    left: 0;
+    width: 40%;
+    background-color: palette.$vista-blue;
+  }
+
+  &::after {
+    left: 40%;
+    width: 60%;
+    background-color: palette.$tan;
+    transition: background-color 0.5s ease-in-out;
+  }
+
+  &.is-lit::after {
+    background-color: #fdf5e6;
+  }
+
+  &__content {
+    flex: 0.4;
+    max-width: none;
+    padding: 0;
+  }
 }
 
 main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 80px;
-    overflow: visible;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  height: 80px !important;
+  flex-shrink: 0;
+  margin: 0; 
+  padding: 0;
+  border: none; 
 }
 
 footer {
-    height: 60px;
-    flex-shrink: 0;
+  height: 60px;
+  flex-shrink: 0;
 }
 
 /* HEADER */
 
 .header {
-    position: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  max-width: 100%;
+  overflow-x: visible;
+  box-sizing: border-box;
+  padding: 0; // remove padding to allow full split
+  margin: 0; // ensure no margin
+  background: transparent; 
+  height: 80px;
+  border: none; 
+  box-shadow: none; 
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
     top: 0;
+    height: 100%;
+    z-index: -1;
+    transition: background-color 0.5s ease-in-out;
+  }
+
+  &::before {
     left: 0;
-    width: 100%;
-    z-index: 999;
-    max-width: 100%;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    padding: 28px 32px;
+    width: 40%;
+    background-color: var(--left-bg);
+  }
 
-    &__wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        max-width: 100%;
-        width: 100%;
+  &::after {
+    left: 40%;
+    width: 60%;
+    background-color: var(--right-bg);
+  }
 
-        @include mixins.phone {
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            padding-left: 16px;
-            padding-right: 16px;
-        }
+  &.is-lit::after {
+    background-color: #fdf5e6; 
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; // prevent wrapping for split design
+    padding: 0 2rem; 
+    height: 100%;
+
+    @include mixins.phone {
+      flex-direction: row; 
+      padding: 0 1rem; 
     }
+  }
+
+  &.about-page-header {
+    background: palette.$tan; 
+  }
+}
+
+body.blue-theme {
+  .header {
+    background-color: palette.$vista-blue;
+    transition: background-color 0.5s ease-in-out;
+
+    // About/Projects/Contact - solid blue header, not the split
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  &.room-lit .header {
+    background-color: #fdf5e6;
+  }
+}
+
+.lamp-fixture {
+  width: 20px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 5px 5px 0 0;
+  margin: 0 auto;
+}
+
+.lamp-cord {
+  width: 2px;
+  height: 100px;
+  background-color: #333;
+  margin: 0 auto;
+}
+
+.lamp-shade {
+  width: 80px;
+  height: 40px;
+  background-color: #555;
+  border-radius: 0 0 40px 40px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.lamp-light {
+  display: none;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 0, 0.7);
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(15px);
+}
+
+.simple-lamp.lamp-on .lamp-light {
+  display: block;
 }
 
 .logo {
-    max-width: 100%;
-    margin-top: 10px;
-    color: palette.$indigo-dye;
-    font-size: 24px;
-    font-weight: 600;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
+  max-width: 100%;
+  margin-top: 20px;
+  color: palette.$black; 
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10; 
+  left: 1rem;
 
-.logo__icon {
-    color: palette.$bright-blue;
-    margin-right: 8px;
-    font-size: 24px;
-    animation: pulse-glow 2s ease-in-out infinite;
-}
+  &__icon {
+    width: 170px;
+    height: 170px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
 
-.logo__text {
-    color: palette.$indigo-dye;
+  &__text {
+    color: palette.$black; 
+    font-family: "Manrope", sans-serif;
+    font-weight: 1000;
+    letter-spacing: 0.2px;
+    font-size: 32px;
+  }
 }
 
 @include mixins.phone {
-    .logo {
-        font-size: 20px;
+  .logo {
+    font-size: 20px;
+
+    &__icon {
+      width: 120px;
+      height: 120px;
+      font-size: 20px;
     }
 
-    .logo__icon {
-        font-size: 20px;
+    &__text {
+      font-size: 24px;
     }
+  }
 }
 
 @keyframes pulse-glow {
-    100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
 }
 
 /* NAV */
 
 .nav {
-    max-width: 100%;
-    margin-top: 10px;
-    overflow-y: visible;
+  display: flex;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: palette.$black;
+    font-weight: 400;
+    font-size: 16px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: palette.$vista-blue; 
+    }
+
+    &.nav__button {
+      display: inline-block; 
+      margin: 0;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 2px solid #1a1a1a;
+    color: #1a1a1a;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: normal;
+    margin-top: 0; 
+    transition: all 0.3s ease;
+    gap: 6px;
+    white-space: nowrap;
+    min-width: auto;
+    width: auto;
+    max-width: fit-content;
+    flex: none;
     box-sizing: border-box;
     height: auto;
-    max-height: none;
-    min-height: auto;
 
-    &__list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 24px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        @include mixins.phone {
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
+    &::before {
+      content: none;
     }
 
-    &__link {
-        text-decoration: none;
-        color: palette.$indigo-dye;
-        font-weight: 400;
-
-        &:hover {
-            color: palette.$bright-blue;
-        }
+    &:hover {
+      background-color: #1a1a1a;
+      color: palette.$vista-blue; 
+      border-color: #1a1a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(26, 26, 26, 0.3);
     }
-
-    &__button {
-        padding: 8px 16px;
-        border: 2px solid palette.$indigo-dye;
-        color: palette.$bright-blue;
-        text-decoration: none;
-        border-radius: 4px;
-        font-weight: 600;
-
-        &:hover {
-            background-color: palette.$light-yellow;
-            color: palette.$indigo-dye;
-            border-color: palette.$yellow;
-        }
-    }
+  }
 }
 
-/* FOOTER */
+.nav-toggle {
+  display: none;
+}
 
-.footer {
-    background-color: palette.$blue-purple;
-    color: palette.$whitesmoke;
-    padding: 1rem 2rem;
+.lamp-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 50px;
+  height: 26px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 13px;
+  padding: 3px;
+  transition: background-color 0.3s ease;
 
-    &__content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
+  &__switch {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+
+    &.on {
+      transform: translateX(24px);
     }
+  }
+}
 
-    &__email {
-        font-size: 1.2rem;
-        margin: 0;
-        margin-top: -4px;
+
+@include mixins.phone {
+  .header {
+    background: palette.$vista-blue; // Single color on mobile
+
+    &__wrapper {
+      background: none;
     }
+  }
 
-    &__icons {
-        display: flex;
-        gap: 1rem;
+  .nav {
+    &__button {
+      font-size: 12px;
+      padding: 6px 12px;
     }
+  }
+}
 
-    &__icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: #ffffff;
-        color: #1a0066;
-        font-size: 1.2rem;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: -4px;
+// only on About/Projects/Contact (body.blue-theme)change header hover colours to the Home beige
+body.blue-theme .header .nav__link:hover {
+  color: palette.$tan;
+}
 
-        &:hover {
-            background-color: #ffd600;
-            color: #1a0066;
-        }
-    }
+body.blue-theme .header .nav__button:hover {
+  background-color: #1a1a1a;
+  color: palette.$tan;
+  border-color: #1a1a1a;
+}
+
+// accessible focus outline to match
+body.blue-theme .header .nav__link:focus-visible,
+body.blue-theme .header .nav__button:focus-visible {
+  outline: 2px dashed palette.$tan;
+  outline-offset: 2px;
 }

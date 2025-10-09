@@ -1,4 +1,8 @@
-function Footer() {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
+
+const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer__content">
@@ -11,30 +15,30 @@ function Footer() {
                         className="footer__icon"
                         aria-label="GitHub"
                     >
-                        <i className="fa-brands fa-github"></i>
+                        <FontAwesomeIcon icon={faGithub} />
                     </a>
                     <a
-                        href="https://linkedin.com"
+                        href="https://www.linkedin.com/in/desislava-lee/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="footer__icon"
                         aria-label="LinkedIn"
                     >
-                        <i className="fa-brands fa-linkedin-in"></i>
+                        <FontAwesomeIcon icon={faLinkedin} />
                     </a>
                     <a
-                        href="/cv.pdf"
+                        href="/Desi_Lee_CV.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="footer__icon"
                         aria-label="CV"
                     >
-                        <i className="fa-solid fa-file-lines"></i>
+                        <FontAwesomeIcon icon={faFileAlt} />
                     </a>
                 </div>
             </div>
         </footer>
     );
-}
+};
 
 export default Footer;

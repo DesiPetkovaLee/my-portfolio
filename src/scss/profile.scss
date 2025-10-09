@@ -1,0 +1,147 @@
+@use "./palette" as palette;
+@use "./mixins"  as mixins;
+
+//(left/right split) 
+.profile {
+  margin: 0;
+  margin-top: 80px;
+  width: 100%;
+  height: calc(100vh - 140px);
+  display: flex;
+  align-items: center; 
+  position: relative;
+
+  // background halves
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: -1;
+  }
+
+  &::before {
+    left: 0;
+    width: 40%;
+    background-color: var(--left-bg);
+  }
+
+  &::after {
+    left: 40%;
+    width: 60%;
+    background-color: var(--right-bg);
+    transition: background-color 0.5s ease;
+  }
+
+  &.is-lit::after {
+    background-color: #fdf5e6;
+  }
+
+  // LEFT - lock to 40%, don't let it shrink 
+  &__content {
+    flex: 0 0 40%;              // no shrink, fixed 40% column
+    max-width: 40%;
+    min-width: 28rem;           // keeps words from breaking into letters 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    align-items: flex-start;   
+    gap: 1.25rem;
+    padding-left: clamp(32px, 6vw, 80px);
+    padding-right: clamp(16px, 3vw, 40px);
+  }
+
+  &__subtitle {
+    font-size: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+    opacity: 0.9;
+  }
+
+  &__title {
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.75rem, 3.5vw, 3rem); 
+    color: #1a1a1a;
+    max-width: 24ch;
+  }
+
+  /* soft underline highlight */
+  &__highlight {
+    color: #1a1a1a;
+    padding: 0 4px;
+    box-decoration-break: clone;
+    box-shadow: inset 0 -0.4em rgba(255, 255, 255, 0.4);
+    display: inline;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  &__button {
+    margin-top: 1rem;
+  }
+
+  &__image {
+    flex: 0 0 60%;
+    max-width: 60%;
+    display: grid;
+    place-items: center;
+    overflow: visible;
+
+    .desk-container {
+      width: clamp(320px, 28vw, 560px);
+      display: block;
+      margin: 0;
+      transform: translateX(clamp(8px, 0.9vw, 20px));
+    }
+
+    .desk-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0;
+      transform: none;
+    }
+  }
+}
+
+@include mixins.tablets {
+  .profile {
+    &__content {
+      min-width: 24rem;
+    }
+  }
+}
+
+@include mixins.phone {
+  .profile {
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 140px);
+    align-items: stretch;
+
+    &__content {
+      flex: none;
+      max-width: none;
+      min-width: auto;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    &__image {
+      flex: none;
+      max-width: none;
+      width: 100%;
+
+      .desk-container {
+        width: min(88vw, 480px);
+        transform: translateX(6px);
+      }
+
+      .desk-image {
+        width: 100%;
+      }
+    }
+  }
+}

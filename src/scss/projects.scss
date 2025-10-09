@@ -1,191 +1,223 @@
-@use "./palette" as palette;
+@use "./palette.scss" as palette;
 
 .projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  padding: 60px 20px;
+  padding: 2rem;
+  background-color: transparent;
+  padding-top: 120px; 
+
+  min-height: calc(100vh - 140px); 
+  height: auto;                   
+  overflow: visible;               
+
+  .projects__card {
+    background-color: transparent;
+    box-shadow: none;             
+  }
+
+  &__github-link {
+    border-color: #fff;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: #fff;
+    }
+  }
+
+  h1 {
+    color: palette.$indigo-dye;
+    font-size: 38px;
+    margin-bottom: 16px;
+    font-weight: 700;
+
+    .about__highlight {
+      color: #1a1a1a;
+      padding: 0 4px;
+      box-decoration-break: clone;
+      box-shadow: inset 0 -0.4em rgba(255, 255, 255, 0.4);
+      display: inline;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+  }
+
+  p {
+    color: palette.$indigo-dye;
+    font-size: 18px;
+    margin-bottom: 26px;
+  }
+
+  &__github-link {
+    padding: 8px 16px;
+    border: 2px solid palette.$black;
+    color: palette.$black;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+
+    &:hover {
+      background-color: palette.$black;
+      color: palette.$tan;
+      border-color: palette.$black;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 60px 40px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 60px auto 80px;
+    padding: 0 10px;
+    align-items: stretch;
+  }
+
+  .projects__card {
+    background-color: palette.$whitesmoke;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    height: 600px;
+    text-decoration: none;
+    color: inherit;
+    text-align: left;
+    align-items: flex-start;
+    padding: 1.5rem 1.25rem;
+  }
+
+  &__card-image-container {
+    background-color: #c0d6ff; 
+    height: 240px;
+    padding: 5rem 1rem 0;
+    display: flex;
     justify-content: center;
-    padding: 60px 20px;
-    padding: 2rem;
-    background-color: palette.$whitesmoke;
-    text-align: center;
+    align-items: flex-end;
+    position: relative;
 
-    h1 {
-        color: palette.$indigo-dye;
-        font-size: 38px;
-        margin-bottom: 16px;
-        font-weight: 700;
+    .projects__card-img {
+      width: 90%;
+      height: 180px;
+      object-fit: cover;
+      object-position: top;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      border-radius: 6px;
+    }
+  }
 
-        .about__highlight {
-            color: palette.$indigo-dye;
-            padding: 0 4px;
-            box-decoration-break: clone;
-            box-shadow: inset 0 -0.4em palette.$pastel-blue;
-            display: inline;
-            overflow-wrap: break-word;
-            word-break: break-word;
-        }
+  &__card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    margin-top: 1rem;
+
+    .projects__card-tech {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+      margin-top: 1rem;
+      text-align: left;
+      color: palette.$indigo-dye;
+      opacity: 0.8;
     }
 
-    p {
-        color: palette.$indigo-dye;
-        font-size: 18px;
-        margin-bottom: 26px;
+    .projects__card-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: palette.$indigo-dye;
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+      text-align: left;
     }
 
-    &__github-link {
-        display: inline-block;
-        color: palette.$bright-blue;
-        font-weight: 600;
+    .projects__card-desc {
+      font-size: 16px;
+      font-weight: 400;
+      color: palette.$indigo-dye;
+      opacity: 0.85;
+      line-height: 1.5;
+      text-align: left;
+      margin-top: 1.5rem;
+      margin-bottom: auto;
+    }
+
+    .projects__card-links {
+      display: flex;
+      justify-content: flex-start;
+      gap: 2rem;
+      font-size: 16px;
+      margin-top: 1.5rem;
+
+      a {
+        color: #111827;
+        font-weight: 500;
         text-decoration: none;
-        border: 2px solid palette.$indigo-dye;
-        border-radius: 4px;
-        padding: 12px 24px;
-        margin-bottom: 40px;
-        transition: all 0.3s ease;
-
-        &:hover {
-            background-color: palette.$light-yellow;
-            color: palette.$indigo-dye;
-            border-color: palette.$yellow;
-        }
-    }
-
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 60px 40px;
-        width: 100%;
-        max-width: 1400px;
-        margin: 60px auto 80px;
-        padding: 0 10px;
-        align-items: stretch;
-    }
-
-    .projects__card {
-        background-color: palette.$whitesmoke;
-        max-width: 500px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 600px;
-        text-decoration: none;
-        color: inherit;
-        text-align: left;
-        align-items: flex-start;
-        padding: 1.5rem 1.25rem;
-    }
-
-    &__card-image-container {
-        background-color: rgb(231, 231, 231);
-        height: 240px;
-        padding: 5rem 1rem 0;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        position: relative;
-
-        .projects__card-img {
-            width: 90%;
-            height: 180px;
-            object-fit: cover;
-            object-position: top;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-            border-radius: 6px;
-        }
-    }
-
-    &__card-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-        width: 100%;
-        margin-top: 1rem;
-
-        .projects__card-tech {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 0.2rem;
-            margin-top: 1rem;
-            text-align: left;
-            color: palette.$indigo-dye;
-            opacity: 0.8;
-        }
-
-        .projects__card-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: palette.$indigo-dye;
-            margin-bottom: 0.8rem;
-            line-height: 1.2;
-            text-align: left;
-        }
-
-        .projects__card-desc {
-            font-size: 16px;
-            font-weight: 400;
-            color: palette.$indigo-dye;
-            opacity: 0.85;
-            line-height: 1.5;
-            text-align: left;
-            margin-top: 1.5rem;
-            margin-bottom: auto;
-        }
-
-        .projects__card-links {
-            display: flex;
-            justify-content: flex-start;
-            gap: 2rem;
-            font-size: 16px;
-            margin-top: 1.5rem;
-
-            a {
-                color: #111827;
-                font-weight: 500;
-                text-decoration: none;
-
-                span {
-                    margin-left: 4px;
-                }
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-        }
-    }
-
-    &__card-btn {
-        padding: 10px 20px;
-        border: 2px solid palette.$indigo-dye;
-        border-radius: 12px;
-        font-size: 15px;
-        font-weight: 600;
-        color: palette.$indigo-dye;
-        background-color: transparent;
-        display: inline-flex;
-        text-decoration: none !important;
-        align-items: center;
-        gap: 6px;
-        transition: all 0.25s ease;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 
         span {
-            font-size: 16px;
+          margin-left: 4px;
         }
 
         &:hover {
-            background-color: palette.$indigo-dye;
-            color: white !important;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-
-            span {
-                color: white;
-            }
+          text-decoration: underline;
         }
+      }
     }
+  }
+
+  &__card-btn {
+    padding: 10px 20px;
+    border: 2px solid palette.$indigo-dye;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: palette.$indigo-dye;
+    background-color: transparent;
+    display: inline-flex;
+    text-decoration: none !important;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+
+    span {
+      font-size: 16px;
+    }
+
+    &:hover {
+      background-color: palette.$indigo-dye;
+      color: white !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+      span {
+        color: white;
+      }
+    }
+  }
+
+  //keep specificity, only remove card background inside the grid 
+  &__grid {
+    > .projects__card {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+body.projects-page-background {
+  background-color: palette.$vista-blue;
+  color: #fff;
 }

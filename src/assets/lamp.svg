@@ -1,0 +1,16 @@
+<svg width="150" height="300" viewBox="0 0 150 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ceiling fixture -->
+  <circle cx="75" cy="5" r="5" fill="#444"/>
+  <!-- Cord -->
+  <line x1="75" y1="5" x2="75" y2="220" stroke="#333" stroke-width="2"/>
+  <!-- Fixture -->
+  <rect x="70" y="215" width="10" height="10" fill="#C0C0C0"/>
+  <!-- Shade -->
+  <path class="lamp-shade" d="M35 225 Q75 210 115 225 L100 280 Q75 295 50 280 Z" fill="#F3F3F3" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <!-- Bulb (now last, so it's on top) -->
+  <g class="bulb">
+    <circle cx="75" cy="235" r="10" fill="#FFFDD0" opacity="0.9"/>
+    <path d="M72 232 C73 235, 77 235, 78 232" stroke="#eab676" stroke-width="1.5" fill="none" class="filament"/>
+  </g>
+</svg>

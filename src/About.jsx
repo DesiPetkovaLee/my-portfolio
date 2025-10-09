@@ -11,8 +11,6 @@ import springIcon from "./assets/springboot.svg";
 import gitIcon from "./assets/git.svg";
 import jqueryIcon from "./assets/jquery.svg";
 import tailwindIcon from "./assets/tailwind.svg";
-// import bootstrapIcon from "./assets/bootstrap.svg";
-// import materialuiIcon from "./assets/materialui.svg";
 
 const About = () => {
     return (
