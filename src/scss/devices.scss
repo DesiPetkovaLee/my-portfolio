@@ -1,3 +1,9 @@
-$xs: 480px; // mobile
-$sm: 768px; // tablet
-$md: 1024px; // desktop
+$xs: 480px;  // For old 'phone' and 'tablets' mixins
+$sm: 768px;  // For old 'tablets'/'desktop' and new 'sm' mixin
+$md: 1024px; // For new 'md' mixin
+$lg: 1440px; // For new 'lg' mixin
+$xl: 1920px; // For new 'xl' mixin (lamp fix)
+
+// $xs: 480px; // mobile
+// $sm: 768px; // tablet
+// $md: 1024px; // desktop

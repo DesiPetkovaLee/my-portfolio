@@ -17,3 +17,34 @@
         @content;
     }
 }
+
+// === NEW MIXINS (for mobile-first design) ===
+//  using these for the lamp fix and future styles
+
+// Tablet Portrait (and up)
+@mixin sm {
+    @media (min-width: devices.$sm) {
+        @content;
+    }
+}
+
+// Tablet Landscape / Small Laptop (and up)
+@mixin md {
+    @media (min-width: devices.$md) {
+        @content;
+    }
+}
+
+// Standard Laptop (and up)
+@mixin lg {
+    @media (min-width: devices.$lg) {
+        @content;
+    }
+}
+
+// Large Desktop (and up)
+@mixin xl {
+    @media (min-width: devices.$xl) {
+        @content;
+    }
+}
