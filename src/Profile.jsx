@@ -17,7 +17,7 @@ const Profile = ({ isLampOn }) => {
   return (
     <section className={`profile ${isLampOn ? "is-lit" : ""}`}>
       <div className="profile__content">
-        <p className="profile__subtitle">👋 Hey! I'm Desi Lee</p>
+        <p className="profile__subtitle">👋 Hey! I'm Desi</p>
         <h1 className="profile__title">
           A <span className="profile__highlight">Junior Software</span>
           {!isMobile ? <br /> : " "}

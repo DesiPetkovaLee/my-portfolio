@@ -1,0 +1,30 @@
+2 ways to deploy next time—pick the one you prefer.
+
+Option A — keep your current gh-pages flow (manual, super simple)
+
+Do your work on a branch, then merge to main.
+
+From the repo root:
+
+npm install    # only if deps changed
+npm run build
+npm run deploy
+
+That publishes dist/ to the gh-pages branch (your Pages source).
+Then open: https://desipetkovalee.github.io/my-portfolio/?v=now (incognito/hard refresh).
+
+Pro tips
+
+Keep dist/ in .gitignore so it doesn’t clutter main.
+
+If the site looks stale, add ?v=something to the URL or hard refresh.
+
+Option B — set it and forget it (automatic on every push)
+
+If you want zero manual steps:
+
+Add .github/workflows/deploy.yml (the Pages workflow I shared earlier).
+
+In Settings → Pages, set Source = GitHub Actions.
+
+From then on, every push to main auto-deploys. No npm run deploy needed.
