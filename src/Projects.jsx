@@ -63,7 +63,7 @@ const Projects = () => {
             <h1>
                 <span className="about__highlight">My Projects</span>
             </h1>
-            <p>Click below to see all my projects on GitHub!</p>
+            <p>Click below to see some of my projects on GitHub!</p>
             <a
                 href="https://github.com/DesiPetkovaLee"
                 target="_blank"
