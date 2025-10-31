@@ -22,12 +22,12 @@ body {
 body {
   font-family: "Manrope", sans-serif;
   background-color: palette.$whitesmoke;
-  color: #1a1a1a; // Very dark grey instead of black
+  color: #1a1a1a; 
   overflow-y: auto; 
 
   &.blue-theme {
     background-color: palette.$vista-blue;
-    color: #1a1a1a; // to match the homepage content
+    color: #1a1a1a; 
     transition: background-color 0.5s ease-in-out;
 
     &.room-lit {

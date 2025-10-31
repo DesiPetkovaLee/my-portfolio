@@ -1,42 +1,90 @@
+@use "./devices.scss"; 
+@use "mixins";
+
 .lamp-container {
-    position: fixed;
-    top: 0;
-    left: 70%; 
+  position: fixed;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 1000;
+  height: 100px;
+  width: 150px;
+  pointer-events: none;
+
+  // default and 13" laptop styles (50/50 split)
+  left: 75%;
+
+  // large desktop override (40/60 split)
+  @include mixins.xl {
+    left: 70%;
+  }
+
+  .lamp {
+    display: block;
+  }
+
+  .light-cone {
+    position: absolute;
+    top: 85px; 
+    left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
-    height: 100px;
-    width: 150px;
+    width: 350px;
+    height: 450px;
+    background: linear-gradient(
+      to bottom,
+      rgba(254, 250, 224, 0.15) 0%,
+      transparent 80%
+    );
+    clip-path: polygon(45% 0, 55% 0, 100% 100%, 0% 100%);
     pointer-events: none;
-  
-    .lamp {
-      display: block;
-  
-    //   &.lamp-on {
-    //     // keeping this in case I want to style the lamp svg differently when on
-    //   }
-    }
-  
-    .light-cone {
-      position: absolute;
-      top: 85px; // start from bottom of lamp
-      left: 50%;
-      transform: translateX(-50%);
-      width: 350px;
-      height: 450px;
-      background: linear-gradient(
-        to bottom,
-        rgba(254, 250, 224, 0.15) 0%,
-        transparent 80%
-      );
-      clip-path: polygon(45% 0, 55% 0, 100% 100%, 0% 100%);
-      pointer-events: none;
-      z-index: 2;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-  
-      &.is-visible {
-        opacity: 1;
-      }
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    &.is-visible {
+      opacity: 1;
     }
   }
+}
+
+// .lamp-container {
+//     position: fixed;
+//     top: 0;
+//     left: 70%; 
+//     transform: translateX(-50%);
+//     z-index: 1000;
+//     height: 100px;
+//     width: 150px;
+//     pointer-events: none;
+  
+//     .lamp {
+//       display: block;
+  
+//     //   &.lamp-on {
+//     //     // keeping this in case I want to style the lamp svg differently when on
+//     //   }
+//     }
+  
+//     .light-cone {
+//       position: absolute;
+//       top: 85px; // start from bottom of lamp
+//       left: 50%;
+//       transform: translateX(-50%);
+//       width: 350px;
+//       height: 450px;
+//       background: linear-gradient(
+//         to bottom,
+//         rgba(254, 250, 224, 0.15) 0%,
+//         transparent 80%
+//       );
+//       clip-path: polygon(45% 0, 55% 0, 100% 100%, 0% 100%);
+//       pointer-events: none;
+//       z-index: 2;
+//       opacity: 0;
+//       transition: opacity 0.5s ease;
+  
+//       &.is-visible {
+//         opacity: 1;
+//       }
+//     }
+//   }
   
